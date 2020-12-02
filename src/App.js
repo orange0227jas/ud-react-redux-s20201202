@@ -1,10 +1,16 @@
+import React, { Component } from 'react';
 
-function App() {
-  return (
+class App extends Component {
+  render (){
+    return( 
     <>
-      <h1>Hello, world!OK??</h1>
+    <div>
+      <label htmlFor="bar">bar</label>
+      <input type="text" onChange={()=> {console.log("I am moti")}}/>;
+    </div>
     </>
-  );
+    )
+  }
 }
 
 export default App;
