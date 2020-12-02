@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // class App extends Component {
 //   render (){
@@ -16,8 +17,8 @@ import React from 'react';
 const App = () => {
   const profiles =[
     {name:"moti" ,age: 30},
-    {name:"ricecake" ,age: 100},
-    {name:"mori"},
+    {name:"ricecake" ,age:100},
+    {name:"blueCafe" ,age:999},
   ]
   return (
     <>
@@ -37,9 +38,10 @@ const Moti = (props) => {
   return <div>I am {name}で、年齢は{age}</div>
 }
 
-Moti.defaultProps ={
-  age:1
- }
-//空の場合に適用される。
+Moti.propTypes ={
+  name: PropTypes.string,
+  age:PropTypes.number.isRequired
+}
+//isRequiredは空白だった場合に検知できる。
 
 export default App;
