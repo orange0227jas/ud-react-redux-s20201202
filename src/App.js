@@ -14,18 +14,32 @@ import React from 'react';
 // }
 
 const App = () => {
+  const profiles =[
+    {name:"moti" ,age: 30},
+    {name:"ricecake" ,age: 100},
+    {name:"mori"},
+  ]
   return (
     <>
-    <Moti />
-    <Moti />
-    <Moti />
-    <Moti />
+    <div>
+      {
+        profiles.map((profile, index ) =>{
+          return <Moti name={profile.name} age={profile.age} key={index}/>
+        })
+      }
+    </div>
     </>
   )
 }
 
-const Moti = () => {
-  return <div>moti!!!</div>
+const Moti = (props) => {
+  const {name , age} =props;
+  return <div>I am {name}で、年齢は{age}</div>
 }
+
+Moti.defaultProps ={
+  age:1
+ }
+//空の場合に適用される。
 
 export default App;
