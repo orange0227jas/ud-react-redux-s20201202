@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
 
 // class App extends Component {
 //   render (){
@@ -15,33 +14,37 @@ import PropTypes from 'prop-types';
 // }
 
 const App = () => {
-  const profiles =[
-    {name:"moti" ,age: 30},
-    {name:"ricecake" ,age:100},
-    {name:"blueCafe" ,age:999},
-  ]
   return (
     <>
-    <div>
-      {
-        profiles.map((profile, index ) =>{
-          return <Moti name={profile.name} age={profile.age} key={index}/>
-        })
-      }
-    </div>
+    <Counter />
     </>
   )
 }
 
-const Moti = (props) => {
-  const {name , age} =props;
-  return <div>I am {name}で、年齢は{age}</div>
-}
+class Counter extends Component {
+  constructor(props){
+    super(props)
+    this.state ={count:0 }
+  }
 
-Moti.propTypes ={
-  name: PropTypes.string,
-  age:PropTypes.number.isRequired
+  handlePlusButton = ()=> {
+    this.setState({ count: this.state.count + 1 } )
+    //状態を帰るときには、setStateを使うこと。setState実行時、再renderされる。
+  }
+  handleMinusButton = () => {
+    this.setState({ count: this.state.count - 1 })
+  }
+  render () {
+    return (
+    <>
+      <div>counter: { this.state.count }</div>
+      <button onClick={this.handlePlusButton} >+1</button>
+      <button onClick={this.handleMinusButton}>-1</button>
+    </>
+    )
+  }
 }
+  
 //isRequiredは空白だった場合に検知できる。
 
 export default App;
