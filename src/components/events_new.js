@@ -26,7 +26,7 @@ async onSubmit(values) {
 }
 
   render () {
-    const {handleSubmit, pristine, submitting} = this.props
+    const {handleSubmit, pristine, submitting,invalid} = this.props
 
     return (
     <>
@@ -34,7 +34,7 @@ async onSubmit(values) {
           <div><Field label="Title" name="title" type="text" component={this.renderField} /></div>
           <div><Field label="Body" name="body" type="text" component={this.renderField} /></div>
           <div>
-            <input  type="submit" value="Submit" disabled={pristine || submitting}></input>
+            <input  type="submit" value="Submit" disabled={pristine || submitting || invalid}></input>
             {/*pristine->can be disable when the box is empty*/}
             {/*submitting->press the button only once*/}
             <Link to="/">Cancel</Link>
